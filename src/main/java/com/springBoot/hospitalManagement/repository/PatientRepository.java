@@ -16,6 +16,8 @@ import org.springframework.stereotype.Repository;
 import com.springBoot.hospitalManagement.entity.type.BloodGroupType;
 
 import jakarta.transaction.Transactional;
+import com.springBoot.hospitalManagement.entity.Appointment;
+
 
 
 @Repository
@@ -89,6 +91,14 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     // 6. Pagination:
 
-    @Query(value = "SELECT * FROM patient", nativeQuery = true)
-    Page<Patient> findAllPatients(Pageable pageable);
+    // @Query(value = "SELECT * FROM patient", nativeQuery = true)
+    // Page<Patient> findAllPatients(Pageable pageable);
+
+
+    // -------------------------------------------------------------------------------------------------
+
+
+    // @Query("SELECT p FROM Patient p LEFT JOIN FETCH p.appointments a LEFT JOIN FETCH a.doctor")
+    @Query("SELECT p FROM Patient p LEFT JOIN FETCH p.appointments")
+    List<Patient> findAllPatientWithAppointment();
 }

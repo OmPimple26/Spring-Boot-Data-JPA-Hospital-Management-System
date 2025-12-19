@@ -28,7 +28,10 @@ public class PatientTests {
     @Test
     public void testPatientRepository() {
         // Test logic for PatientRepository
-        List<Patient> patientList = patientRepository.findAll();
+        // List<Patient> patientList = patientRepository.findAll();
+        // System.out.println(patientList);
+
+        List<Patient> patientList = patientRepository.findAllPatientWithAppointment();
         System.out.println(patientList);
     }
 
@@ -95,10 +98,11 @@ public class PatientTests {
         // Example 12 -
         // Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(0, 2));
         // Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(1, 2));
-        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(0, 2, org.springframework.data.domain.Sort.by("name")));
 
-        for (Patient patient : patientList) {
-            System.out.println(patient);
-        }
+        // Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(0, 2, org.springframework.data.domain.Sort.by("name")));
+
+        // for (Patient patient : patientList) {
+        //     System.out.println(patient);
+        // }
     }
 }
